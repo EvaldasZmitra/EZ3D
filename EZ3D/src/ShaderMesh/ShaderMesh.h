@@ -1,6 +1,6 @@
 #pragma once
-#include "Shader.h"
-#include "Mesh.h"
+#include "../Shader/Shader.h"
+#include "../Mesh/Mesh.h"
 
 class ShaderMesh
 {
