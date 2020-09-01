@@ -10,8 +10,6 @@ public:
 
 	void UpdateUniforms()
 	{
-		auto loc = _shader.GetLocation("Keyword");
-		_shader.UpdateMatrix(loc, _transform.GetTransform());
 	}
 
 private:

@@ -144,7 +144,6 @@
     <None Include="Resources\shader.vertex" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Material\Material.cpp" />
     <ClCompile Include="src\Model\Model.cpp" />
     <ClCompile Include="src\ModelLoader\ModelLoader.cpp" />
     <ClCompile Include="src\EventHandler\EventHandler.cpp" />
@@ -159,7 +158,6 @@
     <ClCompile Include="src\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Material\Material.h" />
     <ClInclude Include="src\Model\Model.h" />
     <ClInclude Include="src\ModelLoader\ModelLoader.h" />
     <ClInclude Include="src\EventHandler\EventHandler.h" />
