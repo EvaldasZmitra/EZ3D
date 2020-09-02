@@ -55,7 +55,7 @@ public:
 		auto loc = glGetUniformLocation(_programId, name.c_str());
 		glActiveTexture(GL_TEXTURE0 + unit);
 		glBindTexture(GL_TEXTURE_2D, texture);
-		glUniform1f(loc, unit);
+		glUniform1i(loc, unit);
 	}
 
 private:

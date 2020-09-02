@@ -8,9 +8,9 @@ public:
 	Texture();
 	void Init(const std::string& fileName);
 	void Bind();
+	GLuint _texture;
 
 	virtual ~Texture();
 protected:
 private:
-	GLuint _texture;
 };

@@ -19,8 +19,12 @@ Renderer::Renderer()
 
 	auto texture = new Texture();
 	texture->Init("Resources/brick_color.png");
+
+	auto texture2 = new Texture();
+	texture2->Init("Resources/brick_normal.png");
+
 	_model = Model();
-	_model.Init(*_mesh, *_shader, *texture);
+	_model.Init(*_mesh, *_shader, *texture, *texture2);
 }
 
 void Renderer::Render()
