@@ -2,6 +2,8 @@
 #include "../Mesh/Mesh.h";
 #include "../Shader/Shader.h"
 #include "../Model/Model.h"
+#include "../ModelLoader/ModelLoader.h"
+#include "../Texture/Texture.h"
 
 class Renderer
 {

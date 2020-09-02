@@ -20,7 +20,7 @@ void Mesh::Draw()
 	glDrawElements(GL_TRIANGLES, _numIndices, GL_UNSIGNED_INT, 0);
 }
 
-void Mesh::AddBuffer(GLuint index, const std::vector<glm::vec3> &data)
+void Mesh::AddBuffer(GLuint index, const std::vector<glm::vec3>& data)
 {
 	glBindVertexArray(_vao);
 	GLuint vbo;
@@ -29,6 +29,18 @@ void Mesh::AddBuffer(GLuint index, const std::vector<glm::vec3> &data)
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(data[0]), &data[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(index, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+	_vbos.push_back(vbo);
+}
+
+void Mesh::AddBuffer(GLuint index, const std::vector<glm::vec2>& data)
+{
+	glBindVertexArray(_vao);
+	GLuint vbo;
+	glGenBuffers(1, &vbo);
+	glEnableVertexAttribArray(index);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(data[0]), &data[0], GL_STATIC_DRAW);
+	glVertexAttribPointer(index, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
 	_vbos.push_back(vbo);
 }
 

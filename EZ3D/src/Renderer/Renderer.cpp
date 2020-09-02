@@ -7,31 +7,25 @@
 
 Renderer::Renderer()
 {
-	std::vector<glm::vec3> vertices = {
-	glm::vec3(-1.0, -1.0, 0.0),
-	glm::vec3(1.0, -1.0, 0.0),
-	glm::vec3(0.0, 1.0, 0.0)
-	};
-	std::vector<unsigned int> indices = { 0, 1, 2 };
-
-	auto _mesh = new Mesh();
-	_mesh->AddBuffer(0, vertices);
-	_mesh->AddIndexBuffer(indices);
+	auto modelLoader = ModelLoader();
+	auto _mesh = modelLoader.LoadModel("Resources/cube.obj");
 
 	auto _shader = new Shader();
-	auto vShader = ReadText("Resources/shader.fragment");
-	auto fShader = ReadText("Resources/shader.vertex");
-	_shader->AddShader(vShader, GL_FRAGMENT_SHADER);
-	_shader->AddShader(fShader, GL_VERTEX_SHADER);
+	auto vShader = ReadText("Resources/shaderVertex.glsl");
+	auto fShader = ReadText("Resources/shaderFragment.glsl");
+	_shader->AddShader(fShader, GL_FRAGMENT_SHADER);
+	_shader->AddShader(vShader, GL_VERTEX_SHADER);
 	_shader->Compile();
 
+	auto texture = new Texture();
+	texture->Init("Resources/brick_color.png");
 	_model = Model();
-	_model.Init(*_mesh, *_shader);
+	_model.Init(*_mesh, *_shader, *texture);
 }
 
 void Renderer::Render()
 {
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearColor(0.0F, 0.2F, 0.6F, 1.0F);
 	_model.Draw();
 }

@@ -1,8 +1,8 @@
 #pragma once
 #include <assimp\mesh.h>
-#include "..\ModelLoader\ModelLoader.h";
 #include <GL\glew.h>
 #include <glm\glm.hpp>
+#include <vector>
 
 class Mesh
 {
@@ -18,10 +18,6 @@ public:
 private:
 	GLuint _vao;
 	std::vector<GLuint> _vbos;
-
-	ModelLoader _loader;
-	aiMesh* _mesh;
-
 	GLsizei _numIndices;
 };
 

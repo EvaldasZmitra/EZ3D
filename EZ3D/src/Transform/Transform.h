@@ -20,9 +20,9 @@ public:
 private:
 	glm::mat4 Rotate()
 	{
-		return glm::rotate(_pos.x, glm::vec3(1, 0, 0)) *
-			glm::rotate(_pos.y, glm::vec3(0, 1, 0)) *
-			glm::rotate(_pos.z, glm::vec3(0, 0, 1));
+		return glm::rotate(_rot.x, glm::vec3(1, 0, 0)) *
+			glm::rotate(_rot.y, glm::vec3(0, 1, 0)) *
+			glm::rotate(_rot.z, glm::vec3(0, 0, 1));
 	}
 
 	glm::mat4 Scale()

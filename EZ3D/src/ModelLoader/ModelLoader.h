@@ -9,11 +9,13 @@
 #include <iostream>
 #include <stdint.h>
 #include <vector>
+#include <glm/glm.hpp>
+#include "../Mesh/Mesh.h"
 
 class ModelLoader
 {
 public:
-	void LoadModel(const std::string &file);
+	Mesh* LoadModel(const std::string& file);
 
 private:
 };

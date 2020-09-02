@@ -97,7 +97,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -144,6 +144,7 @@
     <None Include="Resources\shader.vertex" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Light\Light.cpp" />
     <ClCompile Include="src\Model\Model.cpp" />
     <ClCompile Include="src\ModelLoader\ModelLoader.cpp" />
     <ClCompile Include="src\EventHandler\EventHandler.cpp" />
@@ -151,13 +152,16 @@
     <ClCompile Include="src\Entity\Entity.cpp" />
     <ClCompile Include="src\Mesh\Mesh.cpp" />
     <ClCompile Include="src\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\ShaderMesh\ShaderMesh.cpp" />
     <ClCompile Include="src\Shader\Shader.cpp" />
     <ClCompile Include="src\Source.cpp" />
+    <ClCompile Include="src\Texture\stb_image.c" />
     <ClCompile Include="src\Transform\Transform.cpp" />
     <ClCompile Include="src\Window\Window.cpp" />
+    <ClCompile Include="src\Texture\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Light\Light.h" />
+    <ClInclude Include="src\Texture\stb_image.h" />
     <ClInclude Include="src\Model\Model.h" />
     <ClInclude Include="src\ModelLoader\ModelLoader.h" />
     <ClInclude Include="src\EventHandler\EventHandler.h" />
@@ -165,10 +169,10 @@
     <ClInclude Include="src\Entity\Entity.h" />
     <ClInclude Include="src\Mesh\Mesh.h" />
     <ClInclude Include="src\Renderer\Renderer.h" />
-    <ClInclude Include="src\ShaderMesh\ShaderMesh.h" />
     <ClInclude Include="src\Shader\Shader.h" />
     <ClInclude Include="src\Transform\Transform.h" />
     <ClInclude Include="src\Window\Window.h" />
+    <ClInclude Include="src\Texture\Texture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

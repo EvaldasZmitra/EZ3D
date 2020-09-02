@@ -1,6 +1,6 @@
 #include "ModelLoader.h"
 
-void ModelLoader::LoadModel(const std::string& file)
+Mesh* ModelLoader::LoadModel(const std::string& file)
 {
     auto importer = Assimp::Importer();
     auto modelScene = importer.ReadFile(
@@ -14,11 +14,37 @@ void ModelLoader::LoadModel(const std::string& file)
         aiProcess_Triangulate |
         aiProcess_FixInfacingNormals |
         aiProcess_FindInvalidData |
-        aiProcess_ValidateDataStructure | 0
-
+        aiProcess_ValidateDataStructure
     );
-    for (int i = 0; i < modelScene->mNumMeshes; i++)
+    std::vector<glm::vec3> vertices;
+    std::vector<glm::vec3> normals;
+    std::vector<glm::vec2> textureCoords;
+    std::vector<unsigned int> indices;
+    auto mesh = modelScene->mMeshes[0];
+    for (int i = 0; i < mesh->mNumVertices; i++)
     {
-        auto mesh = modelScene->mMeshes[i];
+        auto vertex = mesh->mVertices[i];
+        auto textureCoord = mesh->mTextureCoords[0][i];
+        auto normal = mesh->mNormals[i];
+
+        vertices.push_back(glm::vec3(vertex.x, vertex.y, vertex.z));
+        textureCoords.push_back(glm::vec2(textureCoord.x, textureCoord.y));
+        normals.push_back(glm::vec3(normal.x, normal.y, normal.z));
     }
+
+    for (int i = 0; i < mesh->mNumFaces; i++)
+    {
+        auto face = mesh->mFaces[i];
+        for (int y = 0; y < face.mNumIndices; y++)
+        {
+            indices.push_back(face.mIndices[y]);
+        }
+    }
+
+    auto meshRez = new Mesh();
+    meshRez->AddBuffer(0, vertices);
+    meshRez->AddBuffer(1, textureCoords);
+    meshRez->AddBuffer(2, normals);
+    meshRez->AddIndexBuffer(indices);
+    return meshRez;
 }

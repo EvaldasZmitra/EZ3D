@@ -14,6 +14,9 @@ Window::Window()
     );
     _context = SDL_GL_CreateContext(_window);
     glewInit();
+
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
 }
 
 void Window::Update()

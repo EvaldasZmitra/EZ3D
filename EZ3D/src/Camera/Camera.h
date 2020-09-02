@@ -5,6 +5,13 @@
 class Camera
 {
 public:
+	Camera(glm::vec3 pos, glm::vec3 lookAt, float fov)
+	{
+		_pos = pos;
+		_lookAt = lookAt;
+		_fov = fov;
+	}
+
 	glm::mat4 GetVP()
 	{
 		auto view = glm::lookAt(_pos, _lookAt, glm::vec3(0,1,0) );
@@ -13,9 +20,9 @@ public:
 			_aspect,
 			_zNear,
 			_zFar);
+		auto model = glm::mat4(1);
 
-		return projection * view; // Remember : inverted !
-
+		return projection * view * model;
 	}
 
 private:

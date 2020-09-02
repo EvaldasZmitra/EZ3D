@@ -17,7 +17,7 @@ public:
 	void Update(const std::string name, glm::mat4 val)
 	{
 		auto loc = glGetUniformLocation(_programId, name.c_str());
-		glUniformMatrix4fv(loc, sizeof(GLint) * 16, false, &val[0][0]);
+		glUniformMatrix4fv(loc, 1, false, &val[0][0]);
 	}
 
 	void Update(const std::string name, glm::vec3 val)
