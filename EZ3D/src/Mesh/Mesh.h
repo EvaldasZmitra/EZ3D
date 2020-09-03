@@ -9,7 +9,7 @@ class Mesh
 public:
 	Mesh();
 	~Mesh();
-	void Draw();
+	void Draw() const;
 
 	void AddBuffer(GLuint index, const std::vector<glm::vec3>& data);
 	void AddBuffer(GLuint index, const std::vector<glm::vec2>& data);

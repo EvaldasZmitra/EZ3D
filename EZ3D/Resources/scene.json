@@ -1,0 +1,38 @@
+{
+  "Meshes": {
+    "CubeMesh": {
+      "FilePath": "Resources/cube.obj"
+    }
+  },
+  "Materials": {
+    "Material": {
+      "Shader": "Shader1",
+      "Textures": ["Brick_Diffuse", "Brick_Normals"]
+    }
+  },
+  "Shaders": {
+    "Shader1": {
+      "VertexPath": "Resources/shaderVertex.glsl",
+      "FragmentPath": "Resources/shaderFragment.glsl"
+    }
+  },
+  "Textures": {
+    "Brick_Diffuse": {
+      "FilePath": "Resources/brick_color.png"
+    },
+    "Brick_Normals": {
+      "FilePath": "Resources/brick_normal.png"
+    }
+  },
+  "Entities": {
+    "Floor": {
+      "Transform": {
+        "Position": "",
+        "Rotation": "",
+        "Scale": ""
+      },
+      "Mesh": "CubeMesh",
+      "Materials": ["Material"]
+    }
+  }
+}

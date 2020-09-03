@@ -29,7 +29,7 @@ void Shader::Compile()
 	glLinkProgram(_programId);
 }
 
-void Shader::Use()
+void Shader::Use() const
 {
 	glUseProgram(_programId);
 }

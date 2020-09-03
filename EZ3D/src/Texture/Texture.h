@@ -5,9 +5,8 @@
 class Texture
 {
 public:
-	Texture();
-	void Init(const std::string& fileName);
-	void Bind();
+	Texture(const std::string& fileName);
+	void Bind() const;
 	GLuint _texture;
 
 	virtual ~Texture();

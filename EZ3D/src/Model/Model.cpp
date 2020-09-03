@@ -1,27 +1,20 @@
 #include "Model.h"
 #include "../Camera/Camera.h"
 
-Model::Model()
+Model::Model(const Mesh* mesh, const Shader* shader) :
+	_mesh(*mesh),
+	_shader(*shader)
 {
-}
-
-void Model::Init(const Mesh& mesh, const Shader& shader, const Texture& texture, const Texture& texture2)
-{
-	_mesh = mesh;
-	_shader = shader;
-	_texture = texture;
-	_texture2 = texture2;
 }
 
 void Model::Draw()
 {
-	auto cam = Camera(glm::vec3(4,3,0), glm::vec3(), 90);
-	auto transform = Transform(glm::vec3(0,0,0), glm::vec3(0, 0, 0), glm::vec3(50, 1, 50));
-	_shader.Use();
-	//_texture.Bind();
+	auto cam = Camera(glm::vec3(4, 3, 0), glm::vec3(), 90);
+	auto transform = Transform(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(50, 1, 50));
 
-	_shader.UpdateTexture("myTextureSampler", _texture._texture, 0);
-	_shader.UpdateTexture("myNormalSampler", _texture2._texture, 1);
+	_shader.Use();
+
+	_shader.BindTextures();
 	_shader.Update("MVP", cam.GetVP() * transform.GetTransform());
 	_shader.Update("M", transform.GetTransform());
 

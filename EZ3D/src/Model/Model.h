@@ -8,14 +8,11 @@
 class Model
 {
 public:
-	Model();
-	void Init(const Mesh& mesh, const Shader& shader, const Texture& texture, const Texture& texture2);
+	Model(const Mesh* mesh, const Shader* shader);
 	void Draw();
 
 private:
-	Mesh _mesh;
-	Shader _shader;
-	Texture _texture;
-	Texture _texture2;
+	const Mesh& _mesh;
+	const Shader& _shader;
 };
 

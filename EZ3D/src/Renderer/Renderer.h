@@ -11,9 +11,10 @@ public:
 	Renderer();
 	void Render();
 
+	void AddModel(const Model &model);
+
 protected:
 private:
-	std::string ReadText(const std::string& file);
-	Model _model;
+	std::vector<Model> _models;
 };
 
